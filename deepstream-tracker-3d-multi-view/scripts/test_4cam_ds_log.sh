@@ -36,39 +36,13 @@ mkdir -p $EXPERIMENT_DIR/outVideos
 
 # Auto-generate DeepStream configuration files
 source mv3dt_venv/bin/activate
-#python utils/deepstream_auto_configurator.py \
-#    --dataset-dir=$DATASET_DIR \
-#    --enable-msg-broker \
-#    --enable-osd \
-#    --detector-config=$DETECTOR_CONFIG \
-#    --tracker-config=$TRACKER_CONFIG \
-#    --config-overrides=override_tracker_4cam.yml \
-#    --output-dir=$EXPERIMENT_DIR
-
-
-#python utils/deepstream_auto_configurator.py \
-#    --dataset-dir=$DATASET_DIR \
-#    --detector-config=$DETECTOR_CONFIG \
-#    --tracker-config=$TRACKER_CONFIG \
-#    --config-overrides=override_tracker_4cam.yml \
-#    --output-dir=$EXPERIMENT_DIR
 
 
 # Launch real-time BEV visualization
-#python utils/kafka_bev_visualizer.py \
-#    --dataset-path=$DATASET_DIR \
-#    --msgconv-config=$EXPERIMENT_DIR/config_msgconv.txt \
-#    --average-multi-cam \
-#    --show-ids &
+python utils/kafka_bev_visualizer_log.py \
+    --dataset-path=$DATASET_DIR \
+    --msgconv-config=$EXPERIMENT_DIR/config_msgconv.txt \
+    --average-multi-cam \
+    --show-ids &
 
 
-# Launch MV3DT pipeline
-docker run -t --privileged --rm --net=host $GPU_FLAG \
-    -v $MODEL_REPO:/workspace/models \
-    -v $DATASET_DIR:/workspace/inputs \
-    -v $EXPERIMENT_DIR:/workspace/experiments \
-    -v /tmp/.X11-unix/:/tmp/.X11-unix \
-    -e DISPLAY=$DISPLAY \
-    -w /workspace/experiments \
-    ${DEEPSTREAM_IMAGE:-nvcr.io/nvidia/deepstream:9.0-triton-multiarch} \
-    deepstream-test5-app -c config_deepstream.txt

@@ -259,7 +259,7 @@ class DeepStreamAutoConfigurator:
     def generate_deployment_config(self, cam_ids: List[int]) -> str:
         """Generate deployment config file for production mode."""
         deployment_config = {
-            'mqtt_broker_per_instance': ["127.0.0.1:1883"],
+            'mqtt_broker_per_instance': ["192.168.36.137:1883"],
             'topic_template': "/trck/cam%d",
             'ds_instance_cam_assignment': [cam_ids],
             'ds_instance_gpu_assignment': [0]

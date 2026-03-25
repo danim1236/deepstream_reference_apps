@@ -34,7 +34,7 @@ models:
     msgbroker_config:
       msgbroker_proto_lib_path: /opt/nvidia/deepstream/deepstream/lib/libnvds_kafka_proto.so
       msgconv_config_path: /workspace/experiments/config_msgconv.txt
-      msgbroker_conn_str: localhost;9092;mv3dt
+      msgbroker_conn_str: 192.168.36.137;9092;mv3dt
       msgbroker_topic: mv3dt
       msgconv_payload_type: 2
       msgconv_msg2p_new_api: 0

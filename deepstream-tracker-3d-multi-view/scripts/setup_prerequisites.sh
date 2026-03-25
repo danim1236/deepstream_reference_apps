@@ -275,7 +275,7 @@ setup_kafka() {
         log_info "Downloading Kafka ${KAFKA_VERSION}..."
         cd "$BASE_DIR"
         
-        local kafka_url="https://dlcdn.apache.org/kafka/${KAFKA_VERSION}/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz"
+        local kafka_url="https://archive.apache.org/dist/kafka/${KAFKA_VERSION}/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz"
         
         if ! wget -q "$kafka_url" -O "kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz"; then
             log_error "Failed to download Kafka from $kafka_url"
